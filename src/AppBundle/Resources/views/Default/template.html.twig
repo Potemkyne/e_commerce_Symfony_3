@@ -1,0 +1,35 @@
+{{ form_start(form,{'attr':{'class':'form-horizontal'}, 'method': 'GET' }) }}
+
+
+{{ form_errors(form) }}
+<div class="form-group">
+    {{ form_label(form.quantity,"quantity",{'label_attr':{'class':'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.quantity) }}
+    <div class="col-sm-10">
+        {{ form_widget(form.quantity,{'attr':{'class':'form-control'}}) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_label(form.poster,"poster", {'label_attr':{'class':'col-sm-2 control-label'}, 'value': '{{ poster.id}}' }) }}
+    {{ form_errors(form.poster) }}
+    <div class="col-sm-10">
+        {{ form_widget(form.poster,{'attr':{'class':'form-control'}}) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_label(form.price,"price",{'label_attr':{'class':'col-sm-2 control-label'}, 'value': '50' }) }}
+    {{ form_errors(form.price) }}
+    <div class="col-sm-10">
+        {{ form_widget(form.price,{'attr':{'class':'form-control'}}) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_label(form.ordor,"ordor", {'label_attr':{'class':'col-sm-2 control-label'}}) }}
+    {{ form_errors(form.ordor) }}
+    <div class="col-sm-10">
+        {{ form_widget(form.ordor,{'attr':{'class':'form-control'}}) }}
+    </div>
+</div>
+{#{{ form_widget(form.save,{'attr':{'class':'btn btn-primary'}}) }}#}
+{{ form_rest(form) }}
+{{ form_end(form) }}

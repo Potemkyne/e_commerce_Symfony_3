@@ -1,0 +1,31 @@
+{# empty Twig template #}
+{% extends "::base.html.twig" %}
+{% block content %}
+    <div class= "container" style="margin-top:150px;">
+        <div class="row">
+            <div class="col-6">
+                <img class="img-thumbnail img-fluid" src="{{ '../uploads/images/'~poster.image.filename }}"  alt="{{ poster.image.filename }}"/>
+            </div>
+            <div class="col-4" style="margin-top:150px;">
+                <div>
+                    <div>
+                        <h3> {{ poster.movie.title}}</h3>
+                        <h4>{{ poster.movie.director}}</h4>
+                    </div>
+                    <div>
+                        <h4> {{ poster.size }}</h4>
+                        <h4>{{ poster.country }}</h4> 
+                        <h4>{{ poster.unitprice}} $</h4>  
+                        <a href="{{ path('card')~'?id='~poster.id}}" class="btn btn-primary">AJOUTER AU PANIER</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

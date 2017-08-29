@@ -1,0 +1,27 @@
+{# empty Twig template #}
+{% extends "::base.html.twig" %}
+{% block content %}
+    <div class="container-fluid" style="margin-top:150px;">
+        <div class="row" style="padding-bottom:40px;">
+            <h3> Résultat de votre recherche : </h3>
+        </div>
+        
+        <div class="card-columns">
+            {% for value in listPoster %}
+                <div class="card " >
+                     <a href="#">  <img class="card-img-top" src="{{ '../uploads/images/'~value.image.filename }}" alt="{{ value.image.filename }}" style="margin-bottom: 8px; "> </a>
+                    <div class="card-block">
+                        <a href="#"><h6 class="card-title">{{ value.movie.title }} </h6></a>
+                        <p class="card-text"> {{ value.movie.director }} </p>
+                        <p class="card-text"> {{ value.size }} </p>
+                            <h6 class="card-text">{{ value.unitprice }}  $</h6>
+                        <a href="{{ path('fichePoster')~'?id='~value.id}}" class="btn btn-primary"> Voir Fiche </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

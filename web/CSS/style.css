@@ -1,0 +1,98 @@
+body {
+    /*background-image: url('pastel1.jpg');
+    background-attachment: fixed;*/
+  font-family: 'Raleway';
+}
+.btn-primary {
+    color: #fff;
+    background-color: #aaaaaa;
+    border-color: #a0a0a0;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 200;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .4rem 3.58rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    border-radius: 0.6rem;
+    transition: all .15s ease-in-out;
+}
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .6rem;
+}
+
+a {
+    color:#000;
+}
+
+.navbar {
+    /*background-image: url(pastel1.jpg);
+    border-color: rgba(170,0,0,0);*/
+}
+.card-columns {
+    column-count: 9;
+}
+.carousel-caption {
+    position:absolute;
+    margin-bottom: 200px;
+    right:55%;
+    padding: 30px;
+    left:10%;
+    z-index:10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: SUNN;
+    color:#fff;
+    font-size: 30px;
+    text-align:left;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    background-color: rgba(0,0,0,.5);
+
+}
+.card-text{
+    position: center;
+    
+}
+
+.im1{
+    font-size: 60px;
+}
+
+@font-face{
+    font-family:SUNN;
+    src: url(SUNN.otf);
+}
+
+p {
+    margin: 5% 0;
+   // color: #AAA;
+   font-size: 0.8em;
+     
+}
+
+header{
+    font-family: SUNN;
+    color:white;
+    font-size: 50px;
+    padding-bottom: 150px;
+}
+

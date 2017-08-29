@@ -1,0 +1,33 @@
+{# empty Twig template #}
+{% extends "::base.html.twig" %}
+{% block jumbotron %}
+{% endblock %}
+{% block content %}
+    <div class= "container" style="margin-top:150px;">
+        <div class="row">
+            <div class="col-3">
+                <p>Produit</p> 
+                {{ app.session.get('title') }}
+            </div>
+            <div class="col-3">
+                <p>prix unitaire</p>
+                {{ app.session.get('unitPrice') }}
+            </div>
+             <div class="col-3">
+                <p>quantite</p> 
+                {{ app.session.get('qte') }}
+            </div>
+             <div class="col-3">
+                <p>Prix total de la ligne</p> 
+                {{ app.session.get('price') }}
+            </div>
+              <div class="col-3">
+                <p>{{app.request.content}}</p> 
+            </div>
+          
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    {{ parent() }}
+{% endblock %}

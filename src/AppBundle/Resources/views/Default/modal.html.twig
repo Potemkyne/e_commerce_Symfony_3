@@ -1,0 +1,28 @@
+   {% for value in rows %}
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog modal-lg ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" > <span >&times;</span> </button>
+                        <h4 class="modal-title">{{value.movie.title}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-5"> <img class="img-responsive" src="{{ '../uploads/images/'~value.image.filename }}" alt="{{ value.image.filename }}" > 
+                            </div>
+                            <div class="col-xs-7">
+                                <p>{{value.movie.director}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button  type="button" class="btn  btn-block" data-dismiss="modal">Fermer</button>
+                        <a href="{{ path('fichePoster')~'?id='~value.id}}" class="btn btn-primary"> Acheter </a>
+                    </div>
+                </div>
+                <!--content--> 
+            </div>
+            <!--dialog--> 
+        </div>
+        <!--modal-->
+    {% endfor %}

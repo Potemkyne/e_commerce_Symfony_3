@@ -1,0 +1,57 @@
+services:
+    app.admin.poster:
+        class: AppBundle\Admin\PosterAdmin
+        tags:
+            - name: sonata.admin 
+              manager_type: orm
+              group: "Content"
+              label: "Poster" 
+              show_mosaic_button: true
+        arguments:
+            - ~
+            - AppBundle\Entity\Poster
+           #- AppBundle:PosterAdmin
+            - ~
+       #calls:
+           #- [ setTranslationDomain, [AppBundle]]
+           #- [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+           #- [ setTranslationDomain, [AppBundle]]
+        public: true
+    
+    app.admin.movie:
+        class: AppBundle\Admin\MovieAdmin
+        tags:
+            - name: sonata.admin 
+              manager_type: orm
+              group: "Content"
+              label: "Movie" 
+              show_mosaic_button: true
+        arguments:
+            - ~
+            - AppBundle\Entity\Movie
+           #- AppBundle:MoviesAdmin
+            - ~
+       #calls:
+           #- [ setTranslationDomain, [AppBundle]]
+           #- [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+           #- [ setTranslationDomain, [AppBundle]]
+        public: true
+        
+    app.admin.image:
+        class: AppBundle\Admin\ImageAdmin
+        tags:
+            - name: sonata.admin 
+              manager_type: orm
+              group: "Content"
+              label: "Image" 
+              show_mosaic_button: true
+        arguments:
+            - ~
+            - AppBundle\Entity\Image
+           #- AppBundle:MoviesAdmin
+            - ~
+       #calls:
+           #- [ setTranslationDomain, [AppBundle]]
+           #- [ setLabelTranslatorStrategy, ["@sonata.admin.label.strategy.underscore"]]
+           #- [ setTranslationDomain, [AppBundle]]
+        public: true

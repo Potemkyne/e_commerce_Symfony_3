@@ -1,0 +1,158 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: en
+
+framework:
+    #esi: ~
+    translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: [en] }
+    secret: '%secret%'
+    router:
+        resource: '%kernel.project_dir%/app/config/routing.yml'
+        strict_requirements: ~
+    form: ~
+    csrf_protection: ~
+    validation: { enable_annotations: true }
+    #serializer: { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale: '%locale%'
+    trusted_hosts: ~
+    session:
+        # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    fragments: ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+
+# Twig Configuration
+twig:
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
+    
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver: pdo_mysql
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path: '%database_path%'
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: '%mailer_transport%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
+    spool: { type: memory }
+
+imports:
+    - { resource: "@AppBundle/Resources/config/admin.yml" }
+
+sonata_block:
+    blocks:
+        sonata.admin.block.search_result:
+            contexts: [admin]
+        sonata.block.service.text:
+        sonata.admin.block.stats:  
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+    default_contexts: [cms]    
+            
+sonata_admin:
+    title:     Shop Project
+    title_logo: /bundles/sonataadmin/logo_title.png
+    templates:
+        show: AppBundle:Admin:Display_Client.html.twig
+        search:              SonataAdminBundle:Core:search.html.twig
+        search_result_block: SonataAdminBundle:Block:block_search_result.html.twig
+        layout:  SonataAdminBundle::standard_layout.html.twig
+        ajax:    SonataAdminBundle::ajax_layout.html.twig
+        dashboard: SonataAdminBundle:Core:dashboard.html.twig
+       # show:    SonataAdminBundle:CRUD:show.html.twig
+        edit:    SonataAdminBundle:CRUD:edit.html.twig
+        list:                       SonataAdminBundle:CRUD:list.html.twig
+        action:                     SonataAdminBundle:CRUD:action.html.twig
+        select:                     SonataAdminBundle:CRUD:list__select.html.twig
+        list_block:                 SonataAdminBundle:Block:block_admin_list.html.twig
+        short_object_description:   SonataAdminBundle:Helper:short-object-description.html.twig
+        batch:                      SonataAdminBundle:CRUD:list__batch.html.twig
+        inner_list_row:             SonataAdminBundle:CRUD:list_inner_row.html.twig
+        base_list_field:            SonataAdminBundle:CRUD:base_list_field.html.twig
+        pager_links:                SonataAdminBundle:Pager:links.html.twig
+        pager_results:              SonataAdminBundle:Pager:results.html.twig
+              
+    security:
+        handler: sonata.admin.security.handler.noop
+        # use this service if you want ACL
+       # handler: sonata.admin.security.handler.acl
+    dashboard:
+        blocks:
+            -
+                position: top
+                class: col-md-12
+                type: sonata.admin.block.admin_list  
+            -
+                position: left
+                type: sonata.block.service.text
+                settings:
+                    content: 
+                        <h2>Welcome to the Eshop Dashboard</h2>
+                        
+                       
+                 
+        groups:
+            app.admin.group.content:
+                #label: app.admin.group.content
+                label: Eshop Dashboard
+                label_catalogue: AppBundle
+                items:
+                    - app.admin.poster
+                    - app.admin.movie
+                    - app.admin.image
+                   
+            app.admin.group.blog:
+                items: ~
+                roles: [ ROLE_ONE, ROLE_TWO ]
+            app.admin.group.misc: ~
+
+fos_user:
+    db_driver: orm 
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: you@example
+        sender_name: You
+    registration:
+        form:
+            type: AppBundle\Form\RegistrationType
+            type: AppBundle\Form\ResettingType
+            
+        
